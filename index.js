@@ -14,23 +14,18 @@ app.get("/metadata/:tokenId", async (req, res) => {
         let data = req.params.tokenId === "0"
             ?
             {
-                "image": "ipfs://QmX3D3v6KSnAs6LXdKnDAhVqehmo1vhh3siD3ekiJc55Ph",
+                "image": "ipfs://Qmek2skbPJ1fmsWGkv61tYd7hncWRBFE11tFRHPZjvDMUJ",
                 "name": "Black Portal Gas Cannon",
                 "description": "The Portal Gas Cannon (PGC) is a collection of 2500 3D NFTs. The first and perhaps the most ingenious invention from the Mad Scientist Dr. Alberto, who lives onboard the Outback Martians Mothership.",
                 "attributes": []
             } :
             {
-                "image": "ipfs://QmX3D3v6KSnAs6LXdKnDAhVqehmo1vhh3siD3ekiJc55Ph",
+                "image": "ipfs://QmVu9R6kdYGuMHK2hzx1Zjox7DAGcYFxyqUcQrvhUxqGtT",
                 "name": "Gold Portal Gas Cannon",
                 "description": "The Portal Gas Cannon (PGC) is a collection of 2500 3D NFTs. The first and perhaps the most ingenious invention from the Mad Scientist Dr. Alberto, who lives onboard the Outback Martians Mothership.",
                 "attributes": []
             }
-        res.status(200).json({
-            "image": "ipfs://QmX3D3v6KSnAs6LXdKnDAhVqehmo1vhh3siD3ekiJc55Ph",
-            "name": "Black Portal Gas Cannon",
-            "description": "The Portal Gas Cannon (PGC) is a collection of 2500 3D NFTs. The first and perhaps the most ingenious invention from the Mad Scientist Dr. Alberto, who lives onboard the Outback Martians Mothership.",
-            "attributes": []
-        })
+        res.status(200).json(data)
     } catch (e) {
         console.log(e)
         res.status(200).json({
