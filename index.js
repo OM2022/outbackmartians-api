@@ -10,7 +10,8 @@ app.get("/metadata/:tokenId", async (req, res) => {
                 error: "The item you requested does not exist in the Zombie Trading Post."
             })
         }
-        let data = req.params.tokenId === 0
+        console.log(req.params.tokenId);
+        let data = req.params.tokenId === "0"
             ?
             {
                 "image": "ipfs://Qmek2skbPJ1fmsWGkv61tYd7hncWRBFE11tFRHPZjvDMUJ",
