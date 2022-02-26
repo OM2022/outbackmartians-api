@@ -25,12 +25,7 @@ app.get("/metadata/:tokenId", async (req, res) => {
                 "description": "The Portal Gas Cannon (PGC) is a collection of 2500 3D NFTs. The first and perhaps the most ingenious invention from the Mad Scientist Dr. Alberto, who lives onboard the Outback Martians Mothership.",
                 "attributes": []
             }
-        res.status(200).json({
-            "image": "ipfs://QmX3D3v6KSnAs6LXdKnDAhVqehmo1vhh3siD3ekiJc55Ph",
-            "name": "Zombie Frens Antidote",
-            "description": "The antidote is necessary in order to create a Human Fren to stake in the Zombie Game.",
-            "attributes": []
-        })
+        res.status(200).json(data)
     } catch (e) {
         console.log(e)
         res.status(200).json({
