@@ -1,13 +1,22 @@
 require("dotenv").config()
 const express = require("express")
 
+const jsonData = require("./metadata.json")
+
+const cachedData = {}
+
+jsonData.forEach(opt => {
+    let id = opt.name.substr(opt.name.indexOf("#") + 1)
+    cachedData[id] = opt
+})
+
 const app = express().set('port', process.env.PORT || 3000)
 
 app.get("/metadata/:tokenId", async (req, res) => {
     try {
         if(req.params.tokenId > 1) {
             return res.status(200).json({
-                error: "The item you requested does not exist in the Zombie Trading Post."
+                error: "This PGC does not exist."
             })
         }
         console.log(req.params.tokenId);
@@ -30,6 +39,22 @@ app.get("/metadata/:tokenId", async (req, res) => {
         console.log(e)
         res.status(200).json({
             error: "The Portal Gun you requested does not exist."
+        })
+    }
+})
+
+app.get("/metadata/martians/:tokenId", async (req, res) => {
+    try {
+        /*if(req.params.tokenId > 1) {
+            return res.status(200).json({
+                error: "The Martian you requested does not exist."
+            })
+        }*/
+        res.status(200).json(cachedData[req.params.tokenId])
+    } catch (e) {
+        console.log(e)
+        res.status(200).json({
+            error: "The Martian you requested does not exist."
         })
     }
 })
