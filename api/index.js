@@ -63,3 +63,5 @@ app.get("/metadata/martians/:tokenId", async (req, res) => {
         })
     }
 })
+
+module.exports = app;
