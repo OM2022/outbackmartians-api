@@ -1,0 +1,3 @@
+{
+    "rewrites": [{ "source": "/metadata/(.*)", "destination": "/api" }]
+  }
