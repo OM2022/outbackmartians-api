@@ -1,5 +1,5 @@
-require("dotenv").config()
-const express = require("express")
+
+const app = require('express')();
 
 const jsonData = require("./metadata.json")
 
@@ -10,7 +10,12 @@ jsonData.forEach(opt => {
     cachedData[id] = opt
 })
 
-const app = express().set('port', process.env.PORT || 3000)
+app.get('/api', (req, res) => {
+    const path = `/metadata/:tokenId`;
+    res.setHeader('Content-Type', 'text/html');
+    res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
+    res.end(`Hello! Go to metadata: <a href="${path}">${path}</a>`);
+});
 
 app.get("/metadata/:tokenId", async (req, res) => {
     try {
@@ -58,4 +63,5 @@ app.get("/metadata/martians/:tokenId", async (req, res) => {
         })
     }
 })
-app.listen(app.get('port'), () => console.log("Listening on port {}...", app.get('port')))
+
+module.exports = app;
